@@ -1,0 +1,64 @@
+import random
+
+print('Are you capable of beating me in rock, paper, and scissors?')
+
+opcoes = ('Rock', 'Paper', 'Scissors')
+points_user = 0
+points_pc = 0
+
+def play():
+    global points_user, points_pc
+
+    user = str(input('\nChoose an option (rock, paper or scissors): ').strip().capitalize())
+    pc = random.choice(opcoes)
+
+    print(f'\nI chose: {pc}')
+    print(f'You chose  : {user}\n')
+
+    # Logica do jogo
+    if user not in opcoes:
+        print('You chose something that is not in the suggested options. Try again.')
+
+    # Casos de Vitoria do Usuario
+    elif user == 'Rock' and pc == 'Scissors':
+        print('Congrats! You won! Great game')
+        points_user += 1
+
+    elif user == 'Paper' and pc == 'Rock':
+        print('Congrats! You won! Great game')
+        points_user += 1            
+
+    elif user == 'Scissors' and pc == 'Paper':
+        print('Congrats! You won! Great game')   
+        points_user += 1
+    
+    # Casos de derrota do user    
+    elif user == 'Rock' and pc == 'Paper':
+        print('HAHA I won! I won! Great game, loser')
+        points_pc += 1
+
+    elif user == 'Scissors' and pc == 'Rock':
+        print('HAHA I won! I won! Great game, loser')
+        points_pc += 1
+
+    elif user == 'Paper' and pc == 'Scissors':
+        print('HAHA I won! I won! Great game, loser')
+        points_pc += 1
+
+    # Caso de empate
+    else:
+        print('It\'s a tie! Great game!')
+
+    print('-'*23)
+    print(f'| SCORE: You {points_user} x {points_pc} PC |')
+    print('-'*23)
+
+cont = True
+while cont:
+    play()
+    cont = input('\nDo you want to play again? (yes/no): ').capitalize().strip()
+    if cont == 'Yes':
+        print('Restarting the game...\n')
+    else:
+        print('Thank you for playing! See you next time!')
+        cont = False
